@@ -6,6 +6,7 @@ Small Node.js service to schedule emails and send them later using a SMTP server
 - Schedule emails for a future time
 - SQLite database (persistent)
 - Stores sent and failed emails
+- Has a password system as to not get abused by the internet
 
 ## Setup
 
@@ -22,6 +23,8 @@ MAIL_PORT=587
 MAIL_USER=you@yourdomain.tld
 MAIL_PASS=your_password
 MAIL_FROM_NAME=Scheduler
+port=3000
+sendpass=your_very_goddamn_secure_password_please_i_beg_of_you_make_this_secure
 ```
 
 ## Run
@@ -44,7 +47,8 @@ Schedule an email:
   "to": "user@example.com",
   "subject": "Hello",
   "body": "This was scheduled",
-  "sendAt": "2025-12-20T14:00:00Z"
+  "sendAt": "2025-12-20T14:00:00Z",
+  "pass": "password-to-send"
 }
 ```
 
