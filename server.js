@@ -1,6 +1,11 @@
 import express from "express";
 import { db } from "./db.js";
 import "dotenv/config";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.json());
@@ -42,6 +47,11 @@ console.log("Usando as credenciais: ")
 console.log({
   MAIL_USER: process.env.MAIL_USER,
   MAIL_PORT: process.env.MAIL_PORT
+});
+
+/* Serve the form */
+app.get("/", (_req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.listen(process.env.port, () => console.log(`API on localhost:${process.env.port}`));
