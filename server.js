@@ -11,10 +11,14 @@ const app = express();
 app.use(express.json());
 
 app.post("/schedule", (req, res) => {
-  const { to, subject, body, sendAt } = req.body;
+  const { to, subject, body, sendAt, pass } = req.body;
 
-  if (!to || !body || !sendAt) {
+  if (!to || !body || !sendAt || !pass) {
     return res.status(400).json({ error: "Missing fields" });
+  }
+
+  if (pass !== process.env.sendpass) {
+    return res.status(400).json({ error: "Wrong password, check your env file" });
   }
 
   const ts = new Date(sendAt).getTime();
