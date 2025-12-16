@@ -44,4 +44,4 @@ console.log({
   MAIL_PORT: process.env.MAIL_PORT
 });
 
-app.listen(3000, () => console.log("API on :3000"));
+app.listen(process.env.port, () => console.log(`API on localhost:${process.env.port}`));
