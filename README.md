@@ -1,4 +1,4 @@
-# Mail Scheduler
+# FutureMail
 
 Small Node.js service to schedule emails and send them later using a SMTP server.
 
